@@ -19,8 +19,8 @@ public class Firma {
     private Long id;
 
     private String nazwa;
-    private LocalDate nip;
-    private LocalDate adres;
+    private String nip;
+    private String adres;
 
     @OneToMany(mappedBy = "firma")
     @ToString.Exclude
