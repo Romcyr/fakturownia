@@ -1,15 +1,10 @@
 package hibernate.fakturownia.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 @Entity
@@ -26,6 +21,11 @@ public class Firma {
     private String nazwa;
     private LocalDate nip;
     private LocalDate adres;
+
+    @OneToMany(mappedBy = "firma")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Faktura> faktury;
 
 }
 

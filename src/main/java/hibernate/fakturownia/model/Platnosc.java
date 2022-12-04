@@ -2,30 +2,29 @@ package hibernate.fakturownia.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Kontrahent {
+public class Platnosc {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nazwa;
-    private LocalDate nip;
-    private LocalDate adres;
+    private Double kwota;
+    @Enumerated(EnumType.STRING)
+    private FormaPlatnosci formaPlatnosci;
 
-    @OneToMany(mappedBy = "kontrahent")
-    @ToString.Exclude
+    @CreationTimestamp
+    private LocalDate dataRealizacji;
+
+    @ManyToOne
     @EqualsAndHashCode.Exclude
-    private Set<Faktura> faktury;
-    
+    private  Faktura faktura;
 }
-
