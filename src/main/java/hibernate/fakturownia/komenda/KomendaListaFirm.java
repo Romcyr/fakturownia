@@ -1,19 +1,15 @@
-package hibernate.warsztat.komendy;
+package hibernate.fakturownia.komenda;
 
-import hibernate.warsztat.DataAccessObject;
-import hibernate.warsztat.HibernateUtil;
-import hibernate.warsztat.model.Pojazd;
-import hibernate.warsztat.model.SerwisPojazdu;
-import jakarta.persistence.TypedQuery;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import hibernate.fakturownia.database.DataAccessObject;
+import hibernate.fakturownia.model.Firma;
+
 
 import java.util.List;
 
-public class KomendaListPojazd implements Komenda{
-    private DataAccessObject<SerwisPojazdu> dataAccessObject;
+public class KomendaListaFirm implements Komenda{
+    private DataAccessObject<Firma> dataAccessObject;
 
-    public KomendaListPojazd() {
+    public KomendaListaFirm() {
         this.dataAccessObject = new DataAccessObject<>();
     }
 
@@ -23,13 +19,13 @@ public class KomendaListPojazd implements Komenda{
     @Override
     public String getKomenda() {
 
-        return "lista pojazd";
+        return "lista firm";
     }
 
     @Override
     public void obsluga() {
-        List<SerwisPojazdu> serwis = dataAccessObject.findAll(SerwisPojazdu.class);
-        serwis.forEach(System.out::println);
+        List<Firma> firma = dataAccessObject.findAll(Firma.class);
+        firma.forEach(System.out::println);
 
     }
 }

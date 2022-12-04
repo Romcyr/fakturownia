@@ -21,6 +21,7 @@ public class Main {
         String komenda;
         do{
         System.out.println("Lista dostępnych komend");
+            System.out.println("_______________________________________________________");
         for (int i = 0; i < listaKomend.size(); i++) {
             // wiersz po wierszu wypiszą się komendy w formie
             //1. dodaj x

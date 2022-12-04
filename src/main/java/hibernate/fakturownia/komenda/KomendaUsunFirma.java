@@ -3,32 +3,28 @@ package hibernate.fakturownia.komenda;
 import hibernate.fakturownia.database.DataAccessObject;
 import hibernate.fakturownia.model.Firma;
 
-public class KomendaDodajFirme implements Komenda {
+public class KomendaUsunFirma implements Komenda {
 
     private DataAccessObject<Firma> dao = new DataAccessObject<>();
 
     @Override
     public String getKomenda(){
-        return "dodaj firme";
+        return "usun firme";
     }
     @Override
     public void obsluga(){
 
-        System.out.println("Podaj nazwe firmy");
-        String nazwa = Komenda.scanner.nextLine();
+        System.out.println("Podaj id firmy do usunięcia");
+        String idString = Komenda.scanner.nextLine();
+        Long id = Long.parseLong(idString);
 
-        System.out.println("Podaj nip firmy");
-        String nip = Komenda.scanner.nextLine();
 
-        System.out.println("Podaj adres firmy");
-        String adres = Komenda.scanner.nextLine();
+        if (dao.delete(Firma.class, id)) {
+            System.out.println("Usunięto firmę");
+        }else {
+            System.err.println("Nie znaleziono firmy");
+        }
 
-        Firma firma = Firma.builder()
-                .adres(adres)
-                .nazwa(nazwa)
-                .nip(nip)
-                .build();
 
-        dao.insert(firma);
     }
 }

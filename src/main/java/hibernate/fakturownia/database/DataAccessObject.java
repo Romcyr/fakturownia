@@ -1,5 +1,6 @@
 package hibernate.fakturownia.database;
 
+import hibernate.fakturownia.komenda.KomendaUsunFirma;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

@@ -19,8 +19,8 @@ public class Kontrahent {
     private Long id;
 
     private String nazwa;
-    private LocalDate nip;
-    private LocalDate adres;
+    private String nip;
+    private String adres;
 
     @OneToMany(mappedBy = "kontrahent")
     @ToString.Exclude
