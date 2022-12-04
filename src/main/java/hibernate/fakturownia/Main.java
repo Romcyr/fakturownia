@@ -14,7 +14,18 @@ public class Main {
 
         List<Komenda> listaKomend = List.of(
 
+
         );
+        System.out.println("Lista dostępnych komend");
+        for (int i = 0; i <= listaKomend.size(); i++) {
+            // wiersz po wierszu wypiszą się komendy w formie
+            //1. dodaj x
+            //2. dodaj y
+
+            System.out.println((i+1) + ". " + listaKomend.get(i));
+
+        }
+        System.out.println("_______________________________________");// pusta linia oddzielająca
 
     }
 }
