@@ -1,8 +1,7 @@
 package hibernate.fakturownia;
 
 import hibernate.fakturownia.database.DataAccessObject;
-import hibernate.fakturownia.komenda.Komenda;
-import hibernate.fakturownia.komenda.KomendaDodajFirme;
+import hibernate.fakturownia.komenda.*;
 import hibernate.fakturownia.model.Firma;
 
 import javax.xml.crypto.Data;
@@ -14,7 +13,15 @@ public class Main {
         new DataAccessObject<Firma>().findAll(Firma.class);
 
         List<Komenda> listaKomend = List.of(
-                new KomendaDodajFirme()
+                new KomendaDodajFirme(),
+                new KomendaListaFirm(),
+                new KomendaUsunFirma(),
+                new KomendaDodajKontrahenta(),
+                new KomendaUsunKontrahenta(),
+                new KomendaListaKontrahentow(),
+                new KomendaDodajFakture(),
+                new KomendaUsunFakture(),
+                new KomendaListaFaktur()
 
 
         );

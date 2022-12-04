@@ -2,24 +2,25 @@ package hibernate.fakturownia.komenda;
 
 import hibernate.fakturownia.database.DataAccessObject;
 import hibernate.fakturownia.model.Firma;
+import hibernate.fakturownia.model.Platnosc;
 
-public class KomendaUsunFirma implements Komenda {
+public class KomendaUsunPlatnosc implements Komenda {
 
-    private DataAccessObject<Firma> dao = new DataAccessObject<>();
+    private DataAccessObject<Platnosc> dao = new DataAccessObject<>();
 
     @Override
     public String getKomenda(){
-        return "usun firme";
+        return "usun platnosc";
     }
     @Override
     public void obsluga(){
 
-        System.out.println("Podaj id firmy do usunięcia");
+        System.out.println("Podaj id formy platnosci do usunięcia");
         String idString = Komenda.scanner.nextLine();
         Long id = Long.parseLong(idString);
 
 
-        if (dao.delete(Firma.class, id)) {
+        if (dao.delete(Platnosc.class, id)) {
             System.out.println("Usunięto firmę");
         }else {
             System.err.println("Nie znaleziono firmy");

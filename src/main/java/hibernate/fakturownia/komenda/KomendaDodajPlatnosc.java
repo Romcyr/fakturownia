@@ -2,39 +2,41 @@ package hibernate.fakturownia.komenda;
 
 import hibernate.fakturownia.database.DataAccessObject;
 import hibernate.fakturownia.model.Faktura;
-import hibernate.fakturownia.model.Firma;
+import hibernate.fakturownia.model.FormaPlatnosci;
+import hibernate.fakturownia.model.Platnosc;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class KomendaDodajFakture implements Komenda {
+public class KomendaDodajPlatnosc implements Komenda {
 
-    private DataAccessObject<Faktura> dao = new DataAccessObject<>();
+    private DataAccessObject<Platnosc> dao = new DataAccessObject<>();
 
     @Override
     public String getKomenda(){
-        return "dodaj fakturę";
+        return "dodaj platnosc";
     }
     @Override
     public void obsluga(){
 
-        System.out.println("Podaj numer faktury");
-        String numer = Komenda.scanner.nextLine();
+        System.out.println("Podaj kwotę platnosci");
+        String kwota = Komenda.scanner.nextLine();
 
-        System.out.println("Podaj termin platnosci (YYYY-MM-DD");
-        String treminPlatnosci = Komenda.scanner.nextLine();
-        LocalDate terminPlatnosci = LocalDate.parse(treminPlatnosci);
+        System.out.println("Podaj formę platności");
+        String formaPlatnosci = Komenda.scanner.nextLine();
 
-        System.out.println("Podaj kwotę");
-        Double kwota = Double.valueOf(Komenda.scanner.nextLine());
 
-        Faktura faktura = Faktura.builder()
-                .numerFaktury(numer)
-                .terminPlatnosci(terminPlatnosci)
-                .kwota(kwota)
+        System.out.println("Data realizacji");
+        LocalDateTime czasRealizacji = LocalDateTime.now();
+
+        Platnosc platnoscNow = Platnosc.builder()
+                .kwota(Double.valueOf(kwota))
+                .formaPlatnosci(FormaPlatnosci.valueOf(formaPlatnosci))
+                .dataRealizacji(LocalDate.from(czasRealizacji))
                 .build();
 
+        dao.insert(platnoscNow);
 
 
-        dao.insert(faktura);
     }
 }

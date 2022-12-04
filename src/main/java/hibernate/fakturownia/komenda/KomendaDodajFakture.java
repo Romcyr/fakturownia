@@ -20,8 +20,9 @@ public class KomendaDodajFakture implements Komenda {
         System.out.println("Podaj numer faktury");
         String numer = Komenda.scanner.nextLine();
 
-        System.out.println("Podaj termin platnosci");
-        LocalDate terminPlatnosci = LocalDate.now();
+        System.out.println("Podaj termin platnosci (YYYY-MM-DD");
+        String treminPlatnosci = Komenda.scanner.nextLine();
+        LocalDate terminPlatnosci = LocalDate.parse(treminPlatnosci);
 
         System.out.println("Podaj kwotę");
         Double kwota = Double.valueOf(Komenda.scanner.nextLine());

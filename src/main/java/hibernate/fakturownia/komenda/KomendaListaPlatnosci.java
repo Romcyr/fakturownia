@@ -2,14 +2,14 @@ package hibernate.fakturownia.komenda;
 
 import hibernate.fakturownia.database.DataAccessObject;
 import hibernate.fakturownia.model.Firma;
-
+import hibernate.fakturownia.model.Platnosc;
 
 import java.util.List;
 
-public class KomendaListaFirm implements Komenda{
-    private DataAccessObject<Firma> dataAccessObject;
+public class KomendaListaPlatnosci implements Komenda{
+    private DataAccessObject<Platnosc> dataAccessObject;
 
-    public KomendaListaFirm() {
+    public KomendaListaPlatnosci() {
         this.dataAccessObject = new DataAccessObject<>();
     }
 
@@ -19,13 +19,13 @@ public class KomendaListaFirm implements Komenda{
     @Override
     public String getKomenda() {
 
-        return "lista firm";
+        return "lista platnosci";
     }
 
     @Override
     public void obsluga() {
-        List<Firma> firma = dataAccessObject.findAll(Firma.class);
-        firma.forEach(System.out::println);
+        List<Platnosc> platnoscs = dataAccessObject.findAll(Platnosc.class);
+        platnoscs.forEach(System.out::println);
 
     }
 }
